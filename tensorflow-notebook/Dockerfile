@@ -18,6 +18,7 @@ RUN mamba install --quiet --yes --channel huggingface --channel pytorch --channe
     mamba clean --all -f -y && \
     pip install --quiet spacy-lookups-data && \
     python -m spacy download de_core_news_sm && \
+    python -m spacy download de_dep_news_trf && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
