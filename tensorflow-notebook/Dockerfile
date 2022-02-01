@@ -10,15 +10,15 @@ LABEL maintainer="Jupyter Project <jupyter@googlegroups.com>"
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Install Tensorflow
-RUN mamba install --quiet --yes --channel huggingface --channel pytorch --channel conda-forge \
+RUN pip install --quiet \
     'tensorflow' \
     'transformers' \
-    'pytorch cpuonly' \
-    'spacy spacy-transformers' && \
-    mamba clean --all -f -y && \
-    pip install --quiet spacy-lookups-data && \
+    'spacy' \
+    'spacy-lookups-data' \
+    'spacy-transformers' && \
+    pip install torch==1.10.2+cpu torchvision==0.11.3+cpu torchaudio==0.10.2+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html && \
     python -m spacy download de_core_news_sm && \
     python -m spacy download de_dep_news_trf && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
-
+## to add download huggingface models
