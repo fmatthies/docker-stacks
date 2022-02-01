@@ -9,8 +9,19 @@ LABEL maintainer="Jupyter Project <jupyter@googlegroups.com>"
 # Fix DL4006
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
+USER root
+
+# Install Git-LFS and download models
+RUN apt-get update --yes && \
+    apt-get install git-lfs && \
+    git lfs install && \
+    git clone https://huggingface.co/smanjil/German-MedBERT "/home/${NB_USER}/work/models/german-medbert" && \
+    git clone https://huggingface.co/deepset/gbert-large "/home/${NB_USER}/work/models/german-bert-large"
+
+USER ${NB_UID}
+
 # Install Tensorflow
-RUN pip install --quiet \
+RUN pip install \
     'tensorflow' \
     'transformers' \
     'spacy' \
@@ -21,4 +32,3 @@ RUN pip install --quiet \
     python -m spacy download de_dep_news_trf && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
-## to add download huggingface models
