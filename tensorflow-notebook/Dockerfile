@@ -22,6 +22,9 @@ USER ${NB_UID}
 
 # Install Tensorflow
 RUN pip install \
+    'numba==0.53.0' \
+    'yellowbrick' \
+    'umap-learn==0.5.2' \
     'tensorflow' \
     'transformers' \
     'spacy' \
