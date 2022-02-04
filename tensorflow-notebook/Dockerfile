@@ -16,7 +16,9 @@ RUN apt-get update --yes && \
     apt-get install git-lfs && \
     git lfs install && \
     git clone https://huggingface.co/smanjil/German-MedBERT "/home/${NB_USER}/work/models/german-medbert" && \
-    git clone https://huggingface.co/deepset/gbert-large "/home/${NB_USER}/work/models/german-bert-large"
+    git clone https://huggingface.co/deepset/gbert-large "/home/${NB_USER}/work/models/german-bert-large" && \
+    git clone https://huggingface.co/Sahajtomar/German-semantic "/home/${NB_USER}/work/models/german-sentence-trf-semantic" && \
+    git clone https://huggingface.co/datasets/gnad10 "/home/${NB_USER}/work/datasets/gnad10"
 
 USER ${NB_UID}
 
