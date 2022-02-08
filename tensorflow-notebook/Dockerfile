@@ -27,7 +27,7 @@ RUN pip install numba==0.53.0 yellowbrick umap-learn==0.5.2  hdbscan && \
     pip install tensorflow transformers sentence-transformers datasets && \
     pip install spacy spacy-lookups-data spacy-transformers && \
     pip install torch==1.10.2+cpu torchvision==0.11.3+cpu torchaudio==0.10.2+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html && \
-    pip install altair networkx && \
+    pip install altair networkx umap-learn[plot] && \
     pip install python-Levenshtein fuzzywuzzy && \
     python -m spacy download de_core_news_sm && \
     python -m spacy download de_dep_news_trf && \
