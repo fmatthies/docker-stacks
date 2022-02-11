@@ -13,7 +13,8 @@ USER root
 
 # Install Git-LFS and download models
 RUN apt-get update --yes && \
-    apt-get install git-lfs && \
+    apt-get -y install git-lfs && \
+    apt-get -y install gcc && \
     git lfs install && \
     git clone https://huggingface.co/smanjil/German-MedBERT "/home/${NB_USER}/work/models/german-medbert" && \
     git clone https://huggingface.co/deepset/gbert-large "/home/${NB_USER}/work/models/german-bert-large" && \
@@ -23,7 +24,8 @@ RUN apt-get update --yes && \
 USER ${NB_UID}
 
 # Install ML, DL & Visualization
-RUN pip install numba==0.53.0 yellowbrick umap-learn==0.5.2  hdbscan && \
+RUN pip install llvmlite --ignore-installed && \
+    pip install numba==0.53.0 yellowbrick umap-learn==0.5.2 --ignore-installed && \
     pip install tensorflow transformers sentence-transformers datasets && \
     pip install spacy spacy-lookups-data spacy-transformers && \
     pip install torch==1.10.2+cpu torchvision==0.11.3+cpu torchaudio==0.10.2+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html && \
