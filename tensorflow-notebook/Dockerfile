@@ -31,6 +31,7 @@ RUN pip install llvmlite --ignore-installed && \
     pip install torch==1.10.2+cpu torchvision==0.11.3+cpu torchaudio==0.10.2+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html && \
     pip install altair networkx pyvis umap-learn[plot] && \
     pip install python-Levenshtein fuzzywuzzy && \
+    pip install bratiaa && \
     python -m spacy download de_core_news_sm && \
     python -m spacy download de_dep_news_trf && \
     fix-permissions "${CONDA_DIR}" && \
