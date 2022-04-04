@@ -15,6 +15,7 @@ USER root
 RUN apt-get update --yes && \
     apt-get -y install git-lfs && \
     apt-get -y install gcc && \
+    apt-get -y install ca-certificates && \
     git lfs install && \
     git clone https://huggingface.co/smanjil/German-MedBERT "/home/${NB_USER}/work/models/german-medbert" && \
     git clone https://huggingface.co/deepset/gbert-large "/home/${NB_USER}/work/models/german-bert-large" && \
